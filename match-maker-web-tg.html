@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<meta charset="UTF-8">
+<title>
+Match Maker Web
+</title>
+</head>
+<h1>
+Matchmaker: Find Your Soulmate in Five Questions
+</h1>
+
+<p>
+Welcome to Matchmaker! Type an Answer From 1-5 For Each Quesiton Based On Your Personal Opinions
+1 Represents Strongly Disagree While 5 Represents Strongly Agree. The Final Results Will be Calculated 
+by Adding up Your Score and Representing it Out of 100. Score a 70 or Higher and You Will be Considered
+a Good match; a Perfect Score Could Land You at Soulmate Status!
+</p>
+<body>
+<br>
+    <label>Trump is a terrible president</label>
+    <select id = "q1">
+        <option value = "5">Strongly Agree</option>
+        <option value = "4">Agree</option>
+        <option value = "3">Neutral</option>
+        <option value = "2">Disagree</option>
+        <option value = "1">Strongly Disagree</option>
+    </select>
+    <br>
+    <label>I love fine arts like music or theater</label>
+    <select id = "q2">
+        <option value = "5">Strongly Agree</option>
+        <option value = "4">Agree</option>
+        <option value = "3">Neutral</option>
+        <option value = "2">Disagree</option>
+        <option value = "1">Strongly Disagree</option>
+    </select>
+    <br>
+    <label>I like video games</label>
+    <select id = "q3">
+        <option value = "5">Strongly Agree</option>
+        <option value = "4">Agree</option>
+        <option value = "3">Neutral</option>
+        <option value = "2">Disagree</option>
+        <option value = "1">Strongly Disagree</option>
+    </select>
+    <br>
+    <label>Online college is very unmotivating</label>
+    <select id = "q4">
+        <option value = "5">Strongly Agree</option>
+        <option value = "4">Agree</option>
+        <option value = "3">Neutral</option>
+        <option value = "2">Disagree</option>
+        <option value = "1">Strongly Disagree</option>
+    </select>
+    <br>
+    <label>I will follow you on Instagram (@goode_bag)</label>
+    <select id = "q5">
+        <option value = "5">Strongly Agree</option>
+        <option value = "4">Agree</option>
+        <option value = "3">Neutral</option>
+        <option value = "2">Disagree</option>
+        <option value = "1">Strongly Disagree</option>
+    </select>
+
+
+
+    <br /><br /><br />
+    <button onclick="calculateCompatibility()">Calculate Compatibility</button>
+    <p id="compatibility"></p>
+    <p id="results"></p>
+
+<script>
+console.log("Starting MatchMaker Lite..")
+
+
+function calculateCompatibility() {
+    const Best_Answers = [
+        5, // question 1 strongly agree
+        5, // question 2 strongly agree
+        5, // question 3 strongly agree
+        5, // question 4 strongly agree
+        5 // question 5 strongly agree
+    ]
+    console.log("calculateCompatibility()")
+    let question1Response = document.getElementById('q1').selectedOptions[0].value;
+    console.log("R1 = " + question1Response);
+    let question1Text = document.getElementById('q1').selectedOptions[0].Text
+    console.log("R1Text = " + question1Text);
+    let question2Response = document.getElementById('q2').selectedOptions[0].value;
+    console.log("R2 = " + question2Response);
+    let question2Text = document.getElementById('q2').selectedOptions[0].text
+    console.log("R2Text = " + question2Text);
+    let question3Response = document.getElementById('q3').selectedOptions[0].value;
+    console.log("R3 = " + question3Response);
+    let question3Text = document.getElementById('q3').selectedOptions[0].text
+    console.log("R3Text = " + question3Text);
+    let question4Response = document.getElementById('q4').selectedOptions[0].value;
+    console.log("R4 = " + question4Response);
+    let question4Text = document.getElementById('q4').selectedOptions[0].text
+    console.log("R4Text = " + question4Text);
+    let question5Response = document.getElementById('q5').selectedOptions[0].value;
+    console.log("R5 = " + question5Response);
+    let question5Text = document.getElementById('q5').selectedOptions[0].text
+    console.log("R5Text = " + question5Text);
+    document.getElementById("compatibility").innerHTML = "Your compatibility is..."
+
+    let compatibility1 = 5-Math.abs(question1Response-Best_Answers[0]);
+    console.log("C1 = " + compatibility1);
+    let compatibility2 = 5-Math.abs(question2Response-Best_Answers[1]);
+    console.log("C2 = " + compatibility2);
+    let compatibility3 = 5-Math.abs(question3Response-Best_Answers[2]);
+    console.log("C3 = " + compatibility3);
+    let compatibility4 = 5-Math.abs(question4Response-Best_Answers[3]);
+    console.log("C4 = " + compatibility4);
+    let compatibility5 = 5-Math.abs(question5Response-Best_Answers[4]);
+    console.log("C5 = " + compatibility5);
+
+    let totalCompatibility = (compatibility1 + compatibility2 + compatibility3 + compatibility4 + compatibility5);
+    totalCompatibility = totalCompatibility * 4;
+    document.getElementById("compatibility").innerHTML = "Your compatibility score is: " + totalCompatibility + "%"
+
+    {
+    if (totalCompatibility <= 65) {
+    document.getElementById("results").innerHTML = "Your opinion is wrong"
+    }else if (totalCompatibility < 80 && totalCompatibility > 65) {
+    document.getElementById("results").innerHTML = "Not too shabby, wanna talk?"
+    }else {
+    document.getElementById("results").innerHTML = "708-646-5287 ;)"
+    }
+}
+}
+</script>
+
+</body>
+</html>
